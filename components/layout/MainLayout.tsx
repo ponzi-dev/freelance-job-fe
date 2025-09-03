@@ -2,6 +2,7 @@
 
 import React from 'react'
 import MainHeader from './MainHeader'
+import MainFooter from './MainFooter'
 
 interface Props {
     children: React.ReactNode
@@ -15,7 +16,7 @@ const MainLayout = ({ children }: Props) => {
                     children
                 }
             </main>
-
+            <MainFooter />
         </>
     )
 }

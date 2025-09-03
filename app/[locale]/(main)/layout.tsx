@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import '@/styles/globals.css'
 import MainLayout from "@/components/layout/MainLayout";
 
+import 'swiper/css';
 
 export const metadata: Metadata = {
   title: "Create Next App",

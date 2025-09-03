@@ -1,8 +1,28 @@
-import React from 'react'
+'use client'
+
+import { clsx } from 'clsx'
+import React, { useEffect, useState } from 'react'
 
 const MainHeader = () => {
+    const [isSticky, setIsSticky] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsSticky(true)
+            } else {
+                setIsSticky(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <header className="header-primary header-transparent">
+        <header className={clsx("header-primary header-transparent", {
+            "sticky": isSticky
+        })}>
             <div className="container">
                 <nav className="navbar navbar-expand-xl justify-content-between">
                     <a href="index.html">
@@ -92,29 +112,7 @@ const MainHeader = () => {
                     </div>
                     <div className="navbar-right d-flex align-items-center gap-4">
                         <div className="header-dropdown d-none d-sm-flex gap-2 align-items-center">
-                            <div className="d-flex align-items-center">
-                                <svg
-                                    className="text-lime-300 flex-shrink-0 mt-n2"
-                                    width={8}
-                                    height={15}
-                                    viewBox="0 0 8 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M6.14726 6.44268C5.54139 6.13511 4.89726 5.90077 4.2595 5.65765C3.8896 5.51704 3.53565 5.35301 3.22315 5.12453C2.60772 4.67342 2.7257 3.94112 3.44637 3.65112C3.65045 3.5691 3.86409 3.54274 4.08093 3.53102C4.91639 3.49002 5.7104 3.63062 6.46614 3.96455C6.84241 4.13152 6.96677 4.07879 7.09432 3.7185C7.22825 3.3377 7.33986 2.95104 7.46422 2.56731C7.54713 2.30954 7.44509 2.13964 7.18042 2.03126C6.69573 1.835 6.19828 1.6944 5.67532 1.61824C4.99292 1.52157 4.99292 1.51864 4.98973 0.888859C4.98654 0.0013019 4.98654 0.00130188 4.01716 0.00130188C3.87685 0.00130188 3.73654 -0.00162735 3.59624 0.00130188C3.14343 0.0130188 3.0669 0.0862495 3.05415 0.50513C3.04777 0.6926 3.05415 0.880071 3.05096 1.07047C3.04777 1.62702 3.04458 1.61824 2.46422 1.81157C1.06116 2.28024 0.193814 3.15901 0.10134 4.56504C0.0184316 5.80997 0.72634 6.65066 1.83922 7.26286C2.52481 7.64074 3.28374 7.86336 4.01078 8.15921C4.29458 8.27345 4.56563 8.40526 4.80159 8.58688C5.49994 9.11707 5.37239 9.99877 4.5433 10.3327C4.10006 10.5114 3.63131 10.5553 3.14981 10.4997C2.40682 10.4147 1.69573 10.236 1.02608 9.91675C0.633865 9.72928 0.519069 9.77907 0.385141 10.1687C0.270345 10.5055 0.168304 10.8453 0.0662633 11.1851C-0.0708541 11.6421 -0.019834 11.7504 0.455294 11.9643C1.06116 12.2338 1.70848 12.3714 2.36856 12.4681C2.88514 12.5443 2.90108 12.5648 2.90746 13.0569C2.91065 13.2795 2.91065 13.5051 2.91384 13.7277C2.91703 14.0089 3.06371 14.1729 3.3794 14.1788C3.73654 14.1846 4.09687 14.1846 4.45402 14.1758C4.74739 14.17 4.89726 14.0235 4.89726 13.7511C4.89726 13.4465 4.9132 13.1389 4.90045 12.8343C4.8845 12.5238 5.03119 12.3656 5.35644 12.2836C6.1058 12.0961 6.74356 11.727 7.23463 11.1763C8.59943 9.65312 8.07966 7.42397 6.14726 6.44268Z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                                <select
-                                    id="currency"
-                                    className="select-dropdown border-0 shadow-none ps-1"
-                                >
-                                    <option className="">VNĐ</option>
-                                    <option className="">USDT</option>
 
-                                </select>
-                            </div>
                             <div className="d-flex align-items-center">
                                 <svg
                                     className="text-lime-300 flex-shrink-0 mt-n2"

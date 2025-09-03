@@ -1,10 +1,11 @@
 import React from 'react'
+import hero_bg from '@/assets/img/hero/hero-bg-2.jpeg'
 
 const HeroStart = () => {
     return (
         <section
             className="hero-two position-relative overflow-hidden"
-            style={{ background: 'url("assets/img/hero/hero-bg-2.jpeg") no-repeat center | ^ 2 | center/cover' }}
+            style={{ background: `url(${hero_bg.src}) no-repeat center` }}
         >
             <div className="container">
                 <div className="row align-items-center position-relative z-3">
