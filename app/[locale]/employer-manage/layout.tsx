@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import '@/styles/globals.css'
+import MainLayoutManage from "@/components/layout/manage/MainLayoutManage";
 
 
 export const metadata: Metadata = {
@@ -16,7 +17,10 @@ export default function AdminLayout({
         <html lang="en">
             <body
             >
-                {children}
+                <MainLayoutManage>
+                    {children}
+                </MainLayoutManage>
+
             </body>
         </html>
     );
