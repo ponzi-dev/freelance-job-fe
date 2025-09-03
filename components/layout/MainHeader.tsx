@@ -1,11 +1,12 @@
 'use client'
 
 import { clsx } from 'clsx'
+import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const MainHeader = () => {
     const [isSticky, setIsSticky] = useState(false)
-
+    const pathname = usePathname()
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 50) {
@@ -20,8 +21,9 @@ const MainHeader = () => {
     }, [])
 
     return (
-        <header className={clsx("header-primary header-transparent", {
-            "sticky": isSticky
+        <header className={clsx("header-primary ", {
+            "sticky": isSticky,
+            "header-transparent": pathname === '/'
         })}>
             <div className="container">
                 <nav className="navbar navbar-expand-xl justify-content-between">
