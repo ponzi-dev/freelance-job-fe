@@ -1,22 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import createIntlMiddleware from "next-intl/middleware";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./locale/routing";
 
-export async function middleware(request: NextRequest) {
-  const defaultLocale = request.headers.get("x-locale") || "vi";
 
-  const handleI18nRouting = createIntlMiddleware({
-    locales: ["en", "vi"],
-    defaultLocale: "vi",
-    localePrefix: "never",
-  });
-
-  const i18nResponse = handleI18nRouting(request);
-
-  i18nResponse.headers.set("x-locale", defaultLocale);
-
-  return i18nResponse || NextResponse.next();
-}
+export default createMiddleware(routing);
 
 export const config = {
-  matcher: "/((?!api|static|.*\\..*|_next).*)",
+  // Chặn những path không cần i18n (api, _next, file tĩnh)
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
