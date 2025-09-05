@@ -1,10 +1,10 @@
-@import url("./css/style.css");
 @import url("./css/bootstrap.min.css");
 @import url("./css/font-awesome-all.min.css");
 @import url("./css/glightbox.min.css");
 @import url("./css/nice-select.css");
 @import url("./css/quill.core.css");
 @import url("./css/quill.snow.css");
+@import url("./css/style.css");
 @import url("./css/resposive.css");
 
 /* @tailwind base;
