@@ -1,6 +1,8 @@
 "use client";
 
 import Breadcrumb from "@/components/element/Breadcrumb";
+import clsx from "clsx";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -33,12 +35,18 @@ export default function SignIn() {
                         <div className="row justify-content-center">
                             <div className="col-auto">
                                 <div className="d-flex align-items-center gap-3">
-                                    <a href="/signin/freelancer" className={`w-form-btn ${role === "freelancer" ? "active" : ""}`}>
+                                    <Link href="/signin/freelancer" className={clsx({
+                                        "w-form-btn-outline": role !== "freelancer",
+                                        "active w-form-btn": role === "freelancer",
+                                    })}>
                                         Freelancer
-                                    </a>
-                                    <a href="/signin/employer" className={`w-form-btn-outline ${role === "employer" ? "active" : ""}`}>
+                                    </Link>
+                                    <Link href="/signin/employer" className={clsx({
+                                        "w-form-btn-outline": role !== "employer",
+                                        "active w-form-btn": role === "employer",
+                                    })}>
                                         Employer
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +131,7 @@ export default function SignIn() {
                                 </div>
                                 <div className="d-flex gap-3 justify-content-center align-items-center social-login">
                                     <button className="social-login-item">Google</button>
-                                    <button className="social-login-item">Facebook</button>
+
                                 </div>
 
                                 <div className="mt-4">
