@@ -1,7 +1,7 @@
 "use client";
 
 import Breadcrumb from "@/components/element/Breadcrumb";
-import { useSignUp } from "@/hooks/useSignUp";
+import { useSignUp } from "@/hooks/api/useSignUp";
 import clsx from "clsx";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -214,7 +214,7 @@ export default function SignUp() {
                                 <div className="mt-4">
                                     <p className="text-center form-text">
                                         Already have an account?
-                                        <Link href="/login"> Log In </Link>
+                                        <Link href={"/signin/" + role}> Log In </Link>
                                     </p>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Breadcrumb from "@/components/element/Breadcrumb";
+import { useSignIn } from "@/hooks/api/useSignIn";
 import clsx from "clsx";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -20,10 +21,15 @@ export default function SignIn() {
         formState: { errors },
     } = useForm<SignInForm>();
 
+    const signInMutation = useSignIn();
+
     const onSubmit = (data: SignInForm) => {
-        console.log("Role:", role); // employer | freelancer
-        console.log("Form Data:", data);
-        // TODO: call API login theo role
+        // gọi API login
+        signInMutation.mutate({
+            email: data.email,
+            password: data.password,
+            role: role ?? "freelancer", // fallback
+        });
     };
 
     return (
@@ -137,7 +143,7 @@ export default function SignIn() {
                                 <div className="mt-4">
                                     <p className="text-center form-text">
                                         Don’t have an account?
-                                        <a href="/signup"> Create Account </a>
+                                        <Link href={"/signup/" + role}> Create Account </Link>
                                     </p>
                                 </div>
                             </div>
